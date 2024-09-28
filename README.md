@@ -1,4 +1,4 @@
-# images Combiner
+# Images Combiner
 
 This web application enables users to effortlessly convert a series of images into a customized video. The intuitive interface allows users to upload images, arrange them in the desired order, and preview the sequence before finalizing. Once satisfied with the preview, the backend generates a high-quality video based on the images and their arrangement.
 
