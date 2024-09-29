@@ -39,12 +39,14 @@ function handleFiles(files) {
         .filter(file => file.type.startsWith('image/'));
     
     validFiles.forEach(file => {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            const imageWrapper = createImageWrapper(event.target.result);
-            imagesContainer.appendChild(imageWrapper);
-        };
-        reader.readAsDataURL(file);
+        if (!file.name.startsWith("download")) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const imageWrapper = createImageWrapper(event.target.result);
+                imagesContainer.appendChild(imageWrapper);
+            };
+            reader.readAsDataURL(file);
+        }
     });
 
     uploadedImages = [...uploadedImages, ...validFiles];

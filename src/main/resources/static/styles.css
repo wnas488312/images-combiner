@@ -7,6 +7,9 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
+#audioDropZone {
+    min-height: 50px;
+}
 .drop-zone {
     width: 100%;
     max-width: 400px;
