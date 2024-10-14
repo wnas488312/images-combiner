@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/images.js" defer></script>
+    <script src="/videoPlayer.js" defer></script>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -17,7 +18,7 @@
     <table>
         <tbody>
             <tr>
-                <td>Video length in seconds: <input type="number" name="number1" min="0" max="100"></td>
+                <td>Video length in seconds: <input type="number" id="vidDuration" name="number1" min="0" max="100"></td>
                 <td>or...</td>
                 <td>
                     <div class="drop-zone" id="audioDropZone">
@@ -30,6 +31,12 @@
     <button id="applyVideoLength">Apply video length</button>
     <div id="image-container">
         <img id="dynamic-image" src="" alt="Dynamic Image">
+    </div>
+    <div id="progress-container">
+        <div class="button-container">
+            <button id="playPauseBtn">Play</button>
+        </div>
+        <input type="range" id="progressBar" min="0" max="100" value="0">
     </div>
 </body>
 </html>

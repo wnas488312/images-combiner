@@ -138,4 +138,7 @@ function displayImage() {
 
     var container = document.getElementById('image-container');
     container.style.display = 'block';
+
+    var progressContainer = document.getElementById('progress-container');
+    progressContainer.style.display = 'block';
 }
