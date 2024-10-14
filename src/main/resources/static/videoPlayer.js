@@ -42,4 +42,6 @@ function updateProgress() {
 
 function progressChanged(progress) {
     console.log(progress.toFixed(1) + ' seconds');
+    console.log('progress: ' + progress / document.getElementById('vidDuration').value * 100 );
+    console.log('images: ' + sliderValues);
 }

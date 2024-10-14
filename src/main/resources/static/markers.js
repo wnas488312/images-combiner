@@ -2,7 +2,7 @@ const sliderValues = [];
 const multiSliderContainer = document.getElementById('multiSliderContainer');
 
 function createMarkers() {
-    const numberOfSliders = 5;
+    const numberOfSliders = imagesCount - 1;
     for (let i = 0; i < numberOfSliders; i++) {
         sliderValues[i] = i * (100 / numberOfSliders);
     }

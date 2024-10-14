@@ -6,6 +6,8 @@ const proceedButton = document.getElementById('applyVideoLength');
 let uploadedImages = [];
 let uploadedImages1 = [];
 
+let imagesCount = 0;
+
 dropZone.addEventListener('dragover', (e) => {
     e.preventDefault();
     dropZone.classList.add('dragover');
@@ -50,6 +52,7 @@ function handleFiles(files) {
             reader.onload = (event) => {
                 const imageWrapper = createImageWrapper(event.target.result);
                 imagesContainer.appendChild(imageWrapper);
+                imagesCount += 1;
             };
             reader.readAsDataURL(file);
         }
