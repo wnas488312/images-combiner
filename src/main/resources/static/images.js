@@ -141,4 +141,6 @@ function displayImage() {
 
     var progressContainer = document.getElementById('progress-container');
     progressContainer.style.display = 'block';
+
+    createMarkers();
 }
