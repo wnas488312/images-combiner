@@ -4,17 +4,16 @@ const multiSliderContainer = document.getElementById('multiSliderContainer');
 function createMarkers() {
     const numberOfSliders = imagesCount - 1;
     for (let i = 0; i < numberOfSliders; i++) {
-        sliderValues[i] = i * (100 / numberOfSliders);
+        sliderValues[i] = (i + 1) * (100 / (numberOfSliders + 1));
     }
 
     for (let i = 0; i < numberOfSliders; i++) {
-        console.log("log");
         const slider = document.createElement('input');
         slider.type = 'range';
         slider.min = 0;
         slider.max = 100;
         slider.step = '0.1'
-        slider.value = i * (100 / numberOfSliders);
+        slider.value = (i + 1) * (100 / (numberOfSliders + 1));
         slider.classList.add('slider');
         slider.dataset.index = i;
         multiSliderContainer.appendChild(slider);

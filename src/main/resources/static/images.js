@@ -39,7 +39,8 @@ dropZone.addEventListener('click', () => {
 });
 
 proceedButton.addEventListener('click', () => {
-    displayImage();
+    displayImage(0);
+    createMarkers();
 });
 
 function handleFiles(files) {      
@@ -134,8 +135,8 @@ function handleDragEnd() {
     }, 0);
 }
 
-function displayImage() {
-    var imageUrl = uploadedImages1[0];
+function displayImage(imageId) {
+    var imageUrl = uploadedImages1[imageId];
     var imgElement = document.getElementById('dynamic-image');
     imgElement.src = imageUrl;
 
@@ -144,6 +145,4 @@ function displayImage() {
 
     var progressContainer = document.getElementById('progress-container');
     progressContainer.style.display = 'block';
-
-    createMarkers();
 }

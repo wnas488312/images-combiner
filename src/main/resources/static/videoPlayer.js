@@ -41,7 +41,27 @@ function updateProgress() {
 }
 
 function progressChanged(progress) {
-    console.log(progress.toFixed(1) + ' seconds');
-    console.log('progress: ' + progress / document.getElementById('vidDuration').value * 100 );
-    console.log('images: ' + sliderValues);
+    const sliderValue = progress / document.getElementById('vidDuration').value * 100;
+    const itemInRange = findIndexInRange(sliderValue, sliderValues);
+    displayImage(itemInRange);
+}
+
+function findIndexInRange(value, arr) {
+    const sortedArr = arr.slice().sort((a, b) => a - b);
+
+    if (value < sortedArr[0]) {
+        return 0;
+    }
+
+    if (value >= sortedArr[sortedArr.length - 1]) {
+        return sortedArr.length;
+    }
+
+    for (let i = 1; i < sortedArr.length; i++) {
+        if (value >= sortedArr[i - 1] && value < sortedArr[i]) {
+            return i;
+        }
+    }
+    
+    return -1;
 }
