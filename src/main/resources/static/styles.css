@@ -156,3 +156,20 @@ button {
     background-repeat: no-repeat;
     cursor: pointer; 
 }
+
+#proceedContainer {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 120px;
+    background-color: rgb(201, 184, 139); 
+    align-items: center;
+}
+
+#progressBarContainer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
