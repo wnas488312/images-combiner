@@ -1,8 +1,10 @@
 const dropZone = document.getElementById('dropZone');
 const dropMessage = document.getElementById('dropMessage');
 const imagesContainer = document.getElementById('imagesContainer');
+const proceedButton = document.getElementById('applyVideoLength');
 
 let uploadedImages = [];
+let uploadedImages1 = [];
 
 dropZone.addEventListener('dragover', (e) => {
     e.preventDefault();
@@ -34,6 +36,10 @@ dropZone.addEventListener('click', () => {
     });
 });
 
+proceedButton.addEventListener('click', () => {
+    displayImage();
+});
+
 function handleFiles(files) {      
     const validFiles = Array.from(files)
         .filter(file => file.type.startsWith('image/'));
@@ -63,6 +69,7 @@ function createImageWrapper(imageSrc) {
 
     const img = document.createElement('img');
     img.src = imageSrc;
+    uploadedImages1 = [...uploadedImages1, imageSrc];
 
     const removeBtn = document.createElement('button');
     removeBtn.classList.add('remove-btn');
@@ -122,4 +129,13 @@ function handleDragEnd() {
         draggedItem = null;
         draggedIndex = null;
     }, 0);
+}
+
+function displayImage() {
+    var imageUrl = uploadedImages1[0];
+    var imgElement = document.getElementById('dynamic-image');
+    imgElement.src = imageUrl;
+
+    var container = document.getElementById('image-container');
+    container.style.display = 'block';
 }

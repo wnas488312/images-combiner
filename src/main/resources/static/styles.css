@@ -60,3 +60,15 @@ body {
     width: 20px;
     height: 20px;
 }
+img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ccc;
+    margin-top: 20px;
+}
+#image-container {
+    display: none;
+    width: 100%;
+    max-width: 400px;
+    max-height: 400px;
+}
