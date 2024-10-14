@@ -65,12 +65,14 @@ img {
     height: auto;
     border: 2px solid #ccc;
     margin-top: 20px;
+    /* transition: transform 0.3s ease; */
 }
 #image-container {
     display: none;
     width: 100%;
     max-width: 400px;
     max-height: 400px;
+    overflow: hidden;
 }
 #progress-container {
     display: none;

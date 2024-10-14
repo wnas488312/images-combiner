@@ -39,7 +39,7 @@ dropZone.addEventListener('click', () => {
 });
 
 proceedButton.addEventListener('click', () => {
-    displayImage(0);
+    displayImage(0, 0);
     createMarkers();
 });
 
@@ -135,10 +135,18 @@ function handleDragEnd() {
     }, 0);
 }
 
-function displayImage(imageId) {
+function displayImage(imageId, zoomValue) {
     var imageUrl = uploadedImages1[imageId];
     var imgElement = document.getElementById('dynamic-image');
     imgElement.src = imageUrl;
+
+    let initialZoom = 1.0;
+    if (zoomValue < 0.0) {
+        const zoomValueInput = document.getElementById('zoomValue');
+        initialZoom = 1.0 + Math.abs(zoomValueInput.value);
+    }
+
+    imgElement.style.transform = 'scale(' + (initialZoom + zoomValue) + ')';
 
     var container = document.getElementById('image-container');
     container.style.display = 'block';

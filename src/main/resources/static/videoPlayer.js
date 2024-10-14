@@ -43,7 +43,12 @@ function updateProgress() {
 function progressChanged(progress) {
     const sliderValue = progress / document.getElementById('vidDuration').value * 100;
     const itemInRange = findIndexInRange(sliderValue, sliderValues);
-    displayImage(itemInRange);
+    const progressNorm = sliderValue - 100 / uploadedImages1.length * itemInRange;
+    const zoomValue = progressNorm * uploadedImages1.length / 100
+
+    const zoomValueInput = document.getElementById('zoomValue');
+
+    displayImage(itemInRange, zoomValue * zoomValueInput.value);
 }
 
 function findIndexInRange(value, arr) {
@@ -64,4 +69,10 @@ function findIndexInRange(value, arr) {
     }
     
     return -1;
+}
+
+function zoomImage() {
+    var zoomLevel = document.getElementById('zoomRange').value;
+    var imgElement = document.getElementById('dynamic-image');
+    imgElement.style.transform = 'scale(' + zoomLevel / 100 + ')';
 }
