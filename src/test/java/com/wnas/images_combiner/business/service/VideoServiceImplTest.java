@@ -1,6 +1,5 @@
 package com.wnas.images_combiner.business.service;
 
-import com.wnas.images_combiner.api.request.InitializeVideoRequest;
 import com.wnas.images_combiner.data.VideoEntityRepo;
 import com.wnas.images_combiner.data.entity.VideoEntity;
 import com.wnas.images_combiner.data.entity.enums.VideoStatus;
@@ -15,7 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
@@ -36,7 +34,7 @@ class VideoServiceImplTest {
 
         Mockito.when(repo.save(entityArgumentCaptor.capture())).thenReturn(entity);
 
-        final VideoEntity newEntry = service.createNewEntry(new InitializeVideoRequest(Collections.emptyList()));
+        final VideoEntity newEntry = service.createNewEntry();
 
         Assertions.assertThat(newEntry).isNotNull();
         Assertions.assertThat(newEntry.getId()).isEqualTo(1);

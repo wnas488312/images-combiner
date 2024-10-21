@@ -1,6 +1,5 @@
 package com.wnas.images_combiner.business.service;
 
-import com.wnas.images_combiner.api.request.InitializeVideoRequest;
 import com.wnas.images_combiner.data.VideoEntityRepo;
 import com.wnas.images_combiner.data.entity.VideoEntity;
 import com.wnas.images_combiner.data.entity.enums.VideoStatus;
@@ -20,7 +19,7 @@ public class VideoServiceImpl implements VideoService{
      * {@inheritDoc}
      */
     @Override
-    public VideoEntity createNewEntry(InitializeVideoRequest request) {
+    public VideoEntity createNewEntry() {
         VideoEntity entity = new VideoEntity();
         entity.setCreationDate(LocalDateTime.now());
         entity.setStatus(VideoStatus.QUEUED);

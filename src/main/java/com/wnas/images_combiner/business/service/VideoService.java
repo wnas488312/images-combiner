@@ -1,6 +1,5 @@
 package com.wnas.images_combiner.business.service;
 
-import com.wnas.images_combiner.api.request.InitializeVideoRequest;
 import com.wnas.images_combiner.data.entity.VideoEntity;
 
 /**
@@ -8,9 +7,8 @@ import com.wnas.images_combiner.data.entity.VideoEntity;
  */
 public interface VideoService {
     /**
-     * Creates new DB entry based on Request data.
-     * @param request   Request with video data.
+     * Creates new DB entry.
      * @return          Newly created DB entry.
      */
-    VideoEntity createNewEntry(InitializeVideoRequest request);
+    VideoEntity createNewEntry();
 }
