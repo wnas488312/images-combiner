@@ -4,17 +4,13 @@ import com.wnas.images_combiner.data.entity.enums.VideoStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "video")
 @Getter
 @Setter
-@Convert(attributeName = "time_marks", converter = TimeMarkConverter.class)
 public class VideoEntity {
 
     @Id
@@ -27,13 +23,6 @@ public class VideoEntity {
 
     @Column(name = "height")
     private Integer height;
-
-    @Column(name = "zoom")
-    private Float zoom;
-
-    @Column(name = "time_marks", columnDefinition = "jsonb")
-    @JdbcTypeCode(SqlTypes.JSON)
-    private List<TimeMark> timeMarks;
 
     @Column(name = "status")
     @Enumerated(EnumType.ORDINAL)

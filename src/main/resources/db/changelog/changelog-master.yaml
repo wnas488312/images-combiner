@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01
+      author: wnas
+      changes:
+        - sqlFile:
+            path: db/changelog/sql/create_table_video.sql
+            relativeToChangelogFile: false
