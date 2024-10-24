@@ -15,6 +15,9 @@ public class ImageEntity {
     @Column(name = "ID")
     private Long id;
 
+    @Column(name = "video_id")
+    private Long videoId;
+
     @Column(name = "start_frame")
     private Integer startFrame;
 
@@ -22,12 +25,12 @@ public class ImageEntity {
     private Integer endFrame;
 
     @Column(name = "zoom")
-    private Integer zoom;
+    private Float zoom;
 
     @Column(name = "file_path")
     private String filePath;
 
     @ManyToOne
-    @JoinColumn(name="video_id", nullable=false)
+    @JoinColumn(name="video_id", nullable=false, insertable=false, updatable=false)
     private VideoEntity videoEntity;
 }

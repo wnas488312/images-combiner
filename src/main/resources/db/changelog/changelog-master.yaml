@@ -13,3 +13,10 @@ databaseChangeLog:
         - sqlFile:
             path: db/changelog/sql/create_table_image.sql
             relativeToChangelogFile: false
+  - changeSet:
+      id: 03
+      author: wnas
+      changes:
+        - sqlFile:
+            path: db/changelog/sql/alter_table_image_change_zoom_column.sql
+            relativeToChangelogFile: false

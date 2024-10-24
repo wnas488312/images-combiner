@@ -4,6 +4,7 @@ import com.wnas.images_combiner.api.VideoApi;
 import com.wnas.images_combiner.api.request.ImageRequestTimeMark;
 import com.wnas.images_combiner.api.response.CreateVideoResponse;
 import com.wnas.images_combiner.api.response.SimpleResponse;
+import com.wnas.images_combiner.business.service.ImageService;
 import com.wnas.images_combiner.business.service.VideoService;
 import com.wnas.images_combiner.data.entity.VideoEntity;
 import lombok.extern.slf4j.Slf4j;
@@ -15,9 +16,11 @@ import org.springframework.web.multipart.MultipartFile;
 @Slf4j
 public class VideoEndpoint implements VideoApi {
     private final VideoService videoService;
+    private final ImageService imageService;
 
-    public VideoEndpoint(VideoService videoService) {
+    public VideoEndpoint(VideoService videoService, ImageService imageService) {
         this.videoService = videoService;
+        this.imageService = imageService;
     }
 
     /**
@@ -38,6 +41,7 @@ public class VideoEndpoint implements VideoApi {
             @RequestPart("file") MultipartFile image,
             @RequestPart("data") ImageRequestTimeMark request
     ) {
+        imageService.saveImage(image, request);
         return new SimpleResponse("OK");
     }
 }
