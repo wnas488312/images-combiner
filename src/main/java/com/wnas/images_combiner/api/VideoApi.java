@@ -1,8 +1,12 @@
 package com.wnas.images_combiner.api;
 
+import com.wnas.images_combiner.api.request.ImageRequestTimeMark;
 import com.wnas.images_combiner.api.response.CreateVideoResponse;
+import com.wnas.images_combiner.api.response.SimpleResponse;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * API used to manage and interact with generated videos.
@@ -17,4 +21,15 @@ public interface VideoApi {
      */
     @PostMapping("/initialize")
     CreateVideoResponse Initialize();
+
+    /**
+     * Endpoint used to upload image that will be displayed in the video.
+     * @param image     Image to be used.
+     * @param request   Additional date used in image display.
+     * @return          Status of the upload.
+     */
+    @PostMapping("/upload")
+    SimpleResponse uploadFileAndData(
+            @RequestPart("file") MultipartFile image,
+            @RequestPart("data") ImageRequestTimeMark request);
 }
