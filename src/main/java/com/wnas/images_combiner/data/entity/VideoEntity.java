@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "video")
@@ -33,4 +34,7 @@ public class VideoEntity {
 
     @Column(name = "creation_date")
     private LocalDateTime creationDate;
+
+    @OneToMany(mappedBy = "videoEntity")
+    private Set<ImageEntity> imageEntities;
 }
