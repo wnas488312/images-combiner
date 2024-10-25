@@ -44,4 +44,12 @@ public class VideoEndpoint implements VideoApi {
         imageService.saveImage(image, request);
         return new SimpleResponse("OK");
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public SimpleResponse startProcessing(Long id) {
+        return null;
+    }
 }

@@ -3,9 +3,7 @@ package com.wnas.images_combiner.api;
 import com.wnas.images_combiner.api.request.ImageRequestTimeMark;
 import com.wnas.images_combiner.api.response.CreateVideoResponse;
 import com.wnas.images_combiner.api.response.SimpleResponse;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -32,4 +30,12 @@ public interface VideoApi {
     SimpleResponse uploadFileAndData(
             @RequestPart("file") MultipartFile image,
             @RequestPart("data") ImageRequestTimeMark request);
+
+    /**
+     * Starts processing of a video with provided id.
+     * @param id    Identifier of a video.
+     * @return      Status of a processing initialization.
+     */
+    @PatchMapping("/{id}/process")
+    SimpleResponse startProcessing(@PathVariable Long id);
 }
