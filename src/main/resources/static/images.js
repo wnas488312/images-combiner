@@ -1,7 +1,7 @@
 const dropZone = document.getElementById('dropZone');
 const dropMessage = document.getElementById('dropMessage');
 const imagesContainer = document.getElementById('imagesContainer');
-const proceedButton = document.getElementById('applyVideoLength');
+const applyButton = document.getElementById('applyVideoLength');
 
 let uploadedImages = [];
 let uploadedImages1 = [];
@@ -38,7 +38,7 @@ dropZone.addEventListener('click', () => {
     });
 });
 
-proceedButton.addEventListener('click', () => {
+applyButton.addEventListener('click', () => {
     displayImage(0, 0);
     createMarkers();
 });
