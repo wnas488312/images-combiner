@@ -42,7 +42,7 @@ public class VideoEndpoint implements VideoApi {
             @RequestPart("data") ImageRequestTimeMark request
     ) {
         imageService.saveImage(image, request);
-        return new SimpleResponse("OK");
+        return SimpleResponse.ok();
     }
 
     /**
@@ -51,6 +51,6 @@ public class VideoEndpoint implements VideoApi {
     @Override
     public SimpleResponse startProcessing(Long id) {
         videoService.submitProcessingTask(id);
-        return new SimpleResponse("OK");
+        return SimpleResponse.ok();
     }
 }
