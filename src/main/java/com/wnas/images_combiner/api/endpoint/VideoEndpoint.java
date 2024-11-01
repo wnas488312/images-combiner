@@ -50,6 +50,7 @@ public class VideoEndpoint implements VideoApi {
      */
     @Override
     public SimpleResponse startProcessing(Long id) {
-        return null;
+        videoService.submitProcessingTask(id);
+        return new SimpleResponse("OK");
     }
 }

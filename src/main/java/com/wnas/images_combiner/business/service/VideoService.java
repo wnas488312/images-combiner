@@ -11,4 +11,10 @@ public interface VideoService {
      * @return          Newly created DB entry.
      */
     VideoEntity createNewEntry();
+
+    /**
+     * Submits processing task for video with given id.
+     * @param videoId   Identifier of a video process.
+     */
+    void submitProcessingTask(Long videoId);
 }
