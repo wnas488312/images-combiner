@@ -5,6 +5,7 @@ import com.wnas.images_combiner.data.ImageEntityRepo;
 import com.wnas.images_combiner.data.VideoEntityRepo;
 import com.wnas.images_combiner.data.entity.ImageEntity;
 import com.wnas.images_combiner.data.entity.VideoEntity;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.ffmpeg.global.avcodec;
 import org.bytedeco.ffmpeg.global.avutil;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.util.Set;
 
 @Slf4j
+@Getter
 public class VideoProcessingTask implements Runnable {
     private final VideoEntityRepo videoRepo;
     private final Long videoId;

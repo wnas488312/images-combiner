@@ -1,5 +1,7 @@
 package com.wnas.images_combiner.business.service;
 
+import com.wnas.images_combiner.business.processing.VideoProcessingTask;
+import com.wnas.images_combiner.business.provider.FFmpegProvider;
 import com.wnas.images_combiner.data.VideoEntityRepo;
 import com.wnas.images_combiner.data.entity.VideoEntity;
 import com.wnas.images_combiner.data.entity.enums.VideoStatus;
@@ -12,11 +14,24 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+
+import static org.mockito.ArgumentMatchers.any;
+
 @ExtendWith(MockitoExtension.class)
 class VideoServiceImplTest {
 
     @Mock
     private VideoEntityRepo repo;
+
+    @Mock
+    private ExecutorService executorService;
+
+    @Mock
+    private FFmpegProvider fFmpegProvider;
+
 
     @InjectMocks
     private VideoServiceImpl service;
@@ -39,5 +54,19 @@ class VideoServiceImplTest {
         Assertions.assertThat(savedEntity).isNotNull();
         Assertions.assertThat(savedEntity.getCreationDate()).isNotNull();
         Assertions.assertThat(savedEntity.getStatus()).isEqualTo(VideoStatus.QUEUED);
+    }
+
+    @Test
+    void submitProcessingTaskTest() {
+        ArgumentCaptor<VideoProcessingTask> taskArgumentCaptor = ArgumentCaptor.forClass(VideoProcessingTask.class);
+        Mockito.when(executorService.submit(taskArgumentCaptor.capture())).thenReturn(new CompletableFuture<>());
+
+        service.submitProcessingTask(1L);
+        Mockito.verify(executorService, Mockito.times(1)).submit(any(Runnable.class));
+
+        final VideoProcessingTask task = taskArgumentCaptor.getValue();
+        Assertions.assertThat(task.getVideoId()).isEqualTo(1L);
+        Assertions.assertThat(task.getVideoRepo()).isEqualTo(repo);
+        Assertions.assertThat(task.getFFmpegProvider()).isEqualTo(fFmpegProvider);
     }
 }
