@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Service
 public class VideoServiceImpl implements VideoService {
@@ -16,9 +17,9 @@ public class VideoServiceImpl implements VideoService {
     private final ExecutorService executorService;
     private final FFmpegProvider fFmpegProvider;
 
-    public VideoServiceImpl(VideoEntityRepo repo, ExecutorService executorService, FFmpegProvider fFmpegProvider) {
+    public VideoServiceImpl(VideoEntityRepo repo, FFmpegProvider fFmpegProvider) {
         this.repo = repo;
-        this.executorService = executorService;
+        this.executorService = Executors.newFixedThreadPool(10);;
         this.fFmpegProvider = fFmpegProvider;
     }
 

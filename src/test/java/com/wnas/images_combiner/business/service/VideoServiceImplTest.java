@@ -6,6 +6,7 @@ import com.wnas.images_combiner.data.VideoEntityRepo;
 import com.wnas.images_combiner.data.entity.VideoEntity;
 import com.wnas.images_combiner.data.entity.enums.VideoStatus;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -14,9 +15,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.lang.reflect.Field;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
 
 import static org.mockito.ArgumentMatchers.any;
 
@@ -32,9 +33,15 @@ class VideoServiceImplTest {
     @Mock
     private FFmpegProvider fFmpegProvider;
 
-
     @InjectMocks
     private VideoServiceImpl service;
+
+    @BeforeEach
+    public void setup() throws Exception {
+        Field executorServiceField = VideoServiceImpl.class.getDeclaredField("executorService");
+        executorServiceField.setAccessible(true);
+        executorServiceField.set(service, executorService);
+    }
 
     @Test
     void createNewEntryTest() {
